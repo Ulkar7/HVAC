@@ -1,0 +1,63 @@
+#trust {
+  text-align: center;
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: rgb(55, 152, 55);
+    margin-top: 60px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .experts,
+    .customer,
+    .responsiveness {
+      background-color: #f9f9f9;
+      padding: 20px 15px;
+      border-radius: 10px;
+      text-align: center;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #e0e0e0;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      h4 {
+        margin-bottom: 5px;
+        font-size: 22px;
+        font-weight: 600;
+        color: rgb(99, 144, 99);
+      }
+
+      p {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.4;
+        margin-top: 5px;
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}

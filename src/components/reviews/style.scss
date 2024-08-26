@@ -1,0 +1,118 @@
+#review {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  background-image: url("../../assets/review.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 60px 0;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.7;
+    z-index: 1;
+  }
+
+  > img {
+    width: 100%;
+    height: auto;
+    z-index: 0;
+  }
+
+  > h1,
+  > p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    z-index: 2;
+  }
+
+  > h1 {
+    color: #64c964;
+    top: 10%;
+    left: 50%;
+    font-size: 50px;
+  }
+
+  > p {
+    color: rgb(216, 216, 216);
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-size: 30px;
+  }
+
+  .read-more-button,
+  .read-less-button {
+    display: block;
+    margin-top: 5px;
+    color: black;
+    cursor: pointer;
+    font-size: 14px; /* Mətni eyni ölçüdə saxlayır */
+    text-decoration: underline;
+    background: none; /* Arxa fonu qaldırır */
+    border: none;
+    padding: 0; /* Paddingi sıfırlayır */
+    position: relative;
+    z-index: 2;
+  }
+
+  .read-more-button {
+    margin-bottom: 10px; /* Read more üçün alt məsafəni artırır */
+  }
+
+  .read-less-button {
+    margin-bottom: 10px; /* Read less üçün alt məsafəni artırır */
+  }
+}
+
+.rev-images {
+  position: relative;
+  height: 64px;
+  span {
+    position: absolute;
+    right: 24px;
+    font-size: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.rev-imagess {
+  position: relative;
+  height: 64px;
+
+  span {
+    position: absolute;
+    right: 24px;
+    font-size: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  }
+}
