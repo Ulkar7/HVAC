@@ -309,10 +309,12 @@ const Reviews = () => {
               >
                 {expandedIndex === index
                   ? review.text
+                  : review.text.length == review.text.slice(0, 250).length
+                  ? review.text
                   : review.text.slice(0, 250) + "..."}
               </p>
             </div>
-            {review.fullText && (
+            {review.text.length > 250 && (
               <button
                 style={{ paddingLeft: "16px" }}
                 onClick={() => toggleReadMore(index)}
