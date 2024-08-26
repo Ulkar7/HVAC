@@ -6,7 +6,9 @@ import Reviews from "./components/reviews";
 import { Services } from "./components/services";
 import Slide from "./components/slider";
 import Trust from "./components/trust";
+import { ToastContainer } from "react-toastify";
 
+import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   return (
     <>
@@ -20,6 +22,7 @@ const App = () => {
         <ContactUs />
         <Footer />
       </main>
+      <ToastContainer />
     </>
   );
 };

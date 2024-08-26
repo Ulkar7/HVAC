@@ -1,6 +1,7 @@
 import "./style.scss";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
 const ContactUs = () => {
   const [formValues, setFormValues] = useState({
     name: "",
@@ -11,16 +12,16 @@ const ContactUs = () => {
   });
 
   const [errors, setErrors] = useState({});
-
+  const [loading, setLoading] = useState(false);
   const validate = () => {
     let errors = {};
-    const phonePattern = /^\+1\d{10}$/;
+    // const phonePattern = /^\+99\d{10}$/;
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!formValues.name) errors.name = "Name is required";
-    if (!formValues.phone || !phonePattern.test(formValues.phone))
-      errors.phone = "Phone number must be in +1XXXXXXXXXX format";
+    // if (!formValues.phone || !phonePattern.test(formValues.phone))
+    //   errors.phone = "Phone number is required";
     if (!formValues.email || !emailPattern.test(formValues.email))
       errors.email = "Valid email is required";
     if (!formValues.address) errors.address = "Address is required";
@@ -31,24 +32,36 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length === 0) {
-      emailjs
-        .sendForm("service_h0y27tw", "template_35mxjbl", form.current, {
-          publicKey: "RXUJRPb3OS2mS1bXS",
-        })
-        .then(
-          () => {
-            console.log("SUCCESS!");
-          },
-          (error) => {
-            console.log("FAILED...", error.text);
-          }
-        );
+    if (loading) {
+      return;
+    }
+    setLoading(true);
+    try {
+      const validationErrors = validate();
+      if (Object.keys(validationErrors).length === 0) {
+        setErrors({});
+        emailjs
+          .sendForm("service_h0y27tw", "template_35mxjbl", form.current, {
+            publicKey: "RXUJRPb3OS2mS1bXS",
+          })
+          .then(
+            () => {
+              toast.success("Message sent succesfully");
+            },
+            (error) => {
+              console.log("FAILED...", error.text);
+              toast.error("Error occured while sending message");
+            }
+          );
 
-      // console.log("Form Submitted Successfully!", formValues);
-    } else {
-      setErrors(validationErrors);
+        // console.log("Form Submitted Successfully!", formValues);
+      } else {
+        setErrors(validationErrors);
+      }
+    } catch {
+      toast.error("Error occured while sending message");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,6 +72,7 @@ const ContactUs = () => {
     });
   };
   const form = useRef();
+
   return (
     <div className="contact" id="contact">
       <h1>Contact Us</h1>
@@ -76,9 +90,10 @@ const ContactUs = () => {
         <input
           type="tel"
           name="phone"
-          placeholder="Phone (+1XXXXXXXXXX)"
+          placeholder="Phone (+994 XX XXXXXXX)"
           value={formValues.phone}
           onChange={handleChange}
+          required
         />
         {errors.phone && <p className="error">{errors.phone}</p>}
 
@@ -108,7 +123,7 @@ const ContactUs = () => {
         />
         {errors.message && <p className="error">{errors.message}</p>}
 
-        <button type="submit">Send Message</button>
+        <button type="submit">{loading ? "Sending..." : "Send message"}</button>
       </form>
     </div>
   );
