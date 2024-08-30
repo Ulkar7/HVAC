@@ -52,7 +52,8 @@ const ContactUs = () => {
               console.log("FAILED...", error.text);
               toast.error("Error occured while sending message");
             }
-          );
+          )
+          .finally(() => setLoading(false));
 
         // console.log("Form Submitted Successfully!", formValues);
       } else {
@@ -60,8 +61,6 @@ const ContactUs = () => {
       }
     } catch {
       toast.error("Error occured while sending message");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -88,12 +87,12 @@ const ContactUs = () => {
         {errors.name && <p className="error">{errors.name}</p>}
 
         <input
-          type="tel"
+          required
+          type="number"
           name="phone"
-          placeholder="Phone (+994 XX XXXXXXX)"
+          placeholder="Phone"
           value={formValues.phone}
           onChange={handleChange}
-          required
         />
         {errors.phone && <p className="error">{errors.phone}</p>}
 

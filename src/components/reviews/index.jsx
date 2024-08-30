@@ -366,10 +366,13 @@ const Reviews = () => {
               >
                 {expandedIndex === index
                   ? yelpReview.text
+                  : yelpReview.text.length ==
+                    yelpReview.text.slice(0, 250).length
+                  ? yelpReview.text
                   : yelpReview.text.slice(0, 250) + "..."}
               </p>
             </div>
-            {yelpReview.fullText && (
+            {yelpReview.text.length > 250 && (
               <button
                 onClick={() => toggleReadMore(index)}
                 className={`read-more-button ${
