@@ -49,7 +49,7 @@ const Header = () => {
           <FaYelp />
         </a>
         <a href="tel:(916)%20409-3381">
-          <button>(916) 409-3381</button>
+          <button>(916) 532-8179</button>
         </a>
       </div>
       <div className={"burger-menu"}>
@@ -94,7 +94,7 @@ const Header = () => {
             <FaYelp />
           </a>
           <a href="tel:(916)%20409-3381">
-            <button>(916) 409-3381</button>
+            <button>(916) 532-8179</button>
           </a>
         </div>
       </div>

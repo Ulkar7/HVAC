@@ -2,7 +2,7 @@
 import Service1 from "../../assets/service1.webp";
 import Service2 from "../../assets/service2.webp";
 import Service3 from "../../assets/service3.webp";
-import Service4 from "../../assets/service4.webp";
+// import Service4 from "../../assets/service4.webp";
 import Service5 from "../../assets/service5.webp";
 import { Slide } from "react-awesome-reveal";
 
@@ -57,7 +57,7 @@ export const Services = () => {
             </div>
           </div>
         </Slide>
-        <Slide direction="right" duration="1600" className="course">
+        {/* <Slide direction="right" duration="1600" className="course">
           <div>
             <img src={Service4} />
             <div className="content">
@@ -68,7 +68,7 @@ export const Services = () => {
               </p>
             </div>
           </div>
-        </Slide>
+        </Slide> */}
         <Slide direction="right" duration="1800" className="course">
           <div>
             <img src={Service5} />
